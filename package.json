@@ -1,0 +1,22 @@
+{
+  "name": "node-js-authentication-tutorial",
+  "version": "1.0.0",
+  "description": "Nodejs authentication tutorial by netninja youtube",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demonicirfan/Node-Js-Authentication-tutorial.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "irfan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/demonicirfan/Node-Js-Authentication-tutorial/issues"
+  },
+  "homepage": "https://github.com/demonicirfan/Node-Js-Authentication-tutorial#readme"
+}

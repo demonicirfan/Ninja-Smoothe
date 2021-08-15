@@ -5,6 +5,7 @@ const authRoutes = require("./routers/authRoutes");
 const app = express();
 
 // middleware
+app.use(express.json()) //it takes in any json data and parses it into javascript object so that we can use it inside the code
 app.use(express.static("public"));
 
 // view engine

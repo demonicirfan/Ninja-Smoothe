@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const authRoutes = require("./routers/authRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
 // middleware
-app.use(express.json()) //it takes in any json data and parses it into javascript object so that we can use it inside the code
 app.use(express.static("public"));
+app.use(express.json());
 
 // view engine
 app.set("view engine", "ejs");
@@ -20,12 +20,10 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .then((result) => app.listen(3000))
+  .then((result) => app.listen(8000))
   .catch((err) => console.log(err));
-
+  
 // routes
 app.get("/", (req, res) => res.render("home"));
 app.get("/smoothies", (req, res) => res.render("smoothies"));
 app.use(authRoutes);
-
-//f6acBEmu2qkbohd6

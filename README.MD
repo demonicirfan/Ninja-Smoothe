@@ -27,3 +27,37 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // combines the 2 above, then you can parse incoming Request Object if object, with nested objects, or generally any type.
 app.use(bodyParser.urlencoded({ extended: true }));
 ```
+
+**What JWT is exactly?**
+It is a token that only the server can generate, and can contain a payload of data.
+
+**What's the point of it?**
+A JWT payload can contain things like user ID so that when the client sends you a JWT, you can be sure that it is issued by you, and you can see to whom it was issued.
+
+**Where can it be useful?**
+Usually, in RESTful APIs, where the server must not use any sort of sessions.
+
+**How does it differ from using sessions?**
+In a typical session flow, the browser sends a cookie containing a token, which is then matched at the server to some data which the server makes use of to authenticate the user.
+
+In a **JWT** flow, the token itself contains the data. The server decodes the token to authenticate the user only. No data stored on the server.
+
+What is a typical authentication flow using **JWT**?
+User credentials sent to /signin
+/signin returns a **JWT**
+**JWT** is stored in localStorage
+**JWT** is sent on every request (to API?)
+The server decrypts **JWT** and extracts user ID out of it
+The server sends response given the authenticated user.
+
+**```res.render``` vs ```res.send```**
+The ```render``` method works when you have a templating engine, such as Handlebars or Jade, in use.
+
+A templating engine is something that parses a given template file and generates HTML output. This is so you can generate an HTML web page depending on some variables in your program.
+
+Such templates are often used with Express.js when writing applications that have a front-end.
+
+The sendfile method, on the other hand, simply sends a given file to the client, regardless of the type and contents of the file.
+
+Since you are using an HTML file, there is nothing particularly to be parsed by the templating engine. So, the output of render is same as that of sendfile (i.e., the HTML written in the file). Hence, both produce the same result.
+

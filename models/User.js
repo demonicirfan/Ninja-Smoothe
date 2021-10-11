@@ -17,12 +17,25 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-// fire a fucntion before a doc saved to database
+//* fire a fucntion before a doc saved to database
 userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
+//* static method to login user
+userSchema.statics.login = async function (email, password) {
+  const user = await this.findOne({ email }); //if the email exist
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password); // if the email is inside the database then we compare the password using bcrypt
+    if (auth) {
+      return user; //if it is true return the user
+    }
+    throw Error('incorrect password');
+  }
+  throw Error('incorrect email');
+};
 
 const User = mongoose.model('user', userSchema);
 
